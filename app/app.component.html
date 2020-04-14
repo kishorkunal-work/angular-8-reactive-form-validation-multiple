@@ -1,0 +1,69 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="radio">
+				<label><input type="radio" name="optradio" value="formType1" [(ngModel)]="activeForm">Form Type 1</label>
+			</div>
+		</div>
+		<div class="col-md-1"></div>
+		<div class="col-md-11">
+			<form [formGroup]="formType1">
+				<div class="form-group">
+					<label>JobName</label>
+					<input type="text" formControlName="jobname" class="form-control" [ngClass]="{ 'is-invalid':f1.jobname.errors }" />
+					<div *ngIf="f1.jobname.errors" class="invalid-feedback">
+						<div *ngIf="f1.jobname.errors.required">jobname is required</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label>Email</label>
+					<input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': f1.email.errors }" />
+					<div *ngIf="f1.email.errors" class="invalid-feedback">
+						<div *ngIf="f1.email.errors.required">Email is required</div>
+						<div *ngIf="f1.email.errors.email">Email must be a valid email address</div>
+					</div>
+				</div>
+			</form>
+		</div>
+		<div class="col-md-12">
+      <div class="radio">
+				<label><input type="radio" name="optradio" value="formType2" [(ngModel)]="activeForm">Form Type 2</label>
+			</div>
+    </div>
+		<div class="col-md-1"></div>
+		<div class="col-md-11">
+      <form [formGroup]="formType2">
+				<div class="radio" >
+					<label><input id="RadioValue1" type="radio"  value="RadioValue1" name="form2value" formControlName="form2value">Radio Value 1</label>
+				</div>
+				<div class="radio" >
+					<label><input id="RadioValue2" type="radio" value="RadioValue2" name="form2value" formControlName="form2value">Radio Value 2</label>
+				</div>
+        <div class="radio" >
+					<label><input id="RadioValue3" type="radio" value="RadioValue3" name="form2value" formControlName="form2value">Radio Value 3</label>
+				</div>
+        </form>
+		</div>
+	</div>
+  <button (click)="SubmitForm()" class="btn btn-success btn-sm btn-block">Submit</button>
+</div>
+
+
+<br><br>
+{{activeForm}}
+<br>
+{{formType2Value}}
+<br>
+<div>
+	<div>
+		FormType1:
+		<br>
+  {{formType1.value | json}}
+  </div>
+		<br>
+		<div>
+			FormType2:
+			<br>
+  {{formType2.value | json}}
+  </div>
+</div>
